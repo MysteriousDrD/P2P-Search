@@ -37,5 +37,7 @@ class Node
   end
 end
 
+
+puts "testing input handler"
 nd = Node.new
 nd.handleInput
