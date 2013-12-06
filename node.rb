@@ -35,7 +35,18 @@ class Node
     end
 
   end
+
+  def hashCode(string_to_hash)
+    hash = 0
+
+    for i in 0...string_to_hash.length
+      hash = hash*31+string_to_hash[i].ord
+    end
+    return hash
+  end
 end
 
 nd = Node.new
 nd.handleInput
+
+puts nd.hashCode("apple")
