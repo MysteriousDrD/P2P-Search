@@ -36,3 +36,6 @@ class Node
 
   end
 end
+
+nd = Node.new
+nd.handleInput
