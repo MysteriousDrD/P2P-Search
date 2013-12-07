@@ -81,10 +81,11 @@ class Node
 
 
       when "PING"
-        msg = JSON.generate(type:type, target_id:target, sender_id:@node_id, ip_address:@ip_address)
+        msg = JSON.generate(type:type, target_id:target, sender_id:@node_id, ip_address:@port)
 
 
       when "ACK"
+        msg = JSON.generate(type:type, node_id:@node_id, ip_address:@port)
 
     end
 
@@ -127,9 +128,11 @@ class Node
           if(received['target_id'] == @node_id)
             puts "we cool"
 
+
           else
             puts "passing it on"
           end
+          sendMessage("ACK",received['ip_address'], received['sender_id'] )
 
 
         when "ACK"
@@ -168,7 +171,7 @@ nd2.init(sock2, 10, "127.0.0.1", port2)
 t1= Thread.new{nd.handleInput}
 t2 = Thread.new{nd2.handleInput}
 
-nd.sendMessage("PING",port2, 11)
+nd.sendMessage("PING",port2, 10)
 
 t1.join
 t2.join
