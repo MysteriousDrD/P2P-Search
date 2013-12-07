@@ -1,8 +1,31 @@
 require 'socket'
+class SearchResult
+
+  def initialize
+    @words = ["component"]
+    @frequency = 0
+    @url = "http://www.google.com"
+  end
+
+  def words
+    @words
+  end
+
+  def url
+    @url
+  end
+
+  def frequency
+    @frequency
+  end
+end
+
+
 class Node
-  def initialize( sock)
+  def init( sock)
     @socket = sock
   end
+
 
   def sendMessageToSelf
     @socket.send "message-to-self", 0, "127.0.0.1", 4913
@@ -59,6 +82,10 @@ end
 
 sock = UDPSocket.new
 sock.bind("127.0.0.1", 4913)
-nd = Node.new(sock)
+nd = Node.new
+nd.init(sock)
 nd.handleInput
 nd.sendMessageToSelf
+
+sr = SearchResult.new
+puts sr.words[0]
