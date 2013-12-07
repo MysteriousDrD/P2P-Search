@@ -1,4 +1,14 @@
+require 'socket'
 class Node
+  def initialize( sock)
+    @socket = sock
+  end
+
+  def sendMessageToSelf
+    @socket.send "message-to-self", 0, "127.0.0.1", 4913
+    p @socket.recvfrom(15) #=> ["message-to", ["AF_INET", 4913, "localhost", "127.0.0.1"]]
+  end
+
   def handleInput
     bar = "ROUTING_INFO" #this will be read in from other nodes later
 
@@ -46,7 +56,9 @@ class Node
   end
 end
 
-nd = Node.new
-nd.handleInput
 
-puts nd.hashCode("apple")
+sock = UDPSocket.new
+sock.bind("127.0.0.1", 4913)
+nd = Node.new(sock)
+nd.handleInput
+nd.sendMessageToSelf
