@@ -1,4 +1,5 @@
 require 'socket'
+require 'json'
 class SearchResult
 
   def initialize
@@ -24,6 +25,10 @@ end
 class Node
   def init( sock)
     @socket = sock
+    @node_id = 1
+    @ip_address = "127.0.0.1"
+    @gateway_id = 22
+
   end
 
 
@@ -40,17 +45,57 @@ class Node
   end
 
   def search(words)
-    
+
   end
 
   def sendMessageToSelf
-    @socket.send "message-to-self", 0, "127.0.0.1", 4913
-    p @socket.recvfrom(15) #=> ["message-to", ["AF_INET", 4913, "localhost", "127.0.0.1"]]
+
+    message = generateMessage("JOINING_NETWORK")
+    @socket.send message, 0, "127.0.0.1", 4913
+
+  end
+
+  def generateMessage(type)
+
+    case type
+      when "JOINING_NETWORK"
+        msg = JSON.generate(type:type, node_id:@node_id, ip_address:@ip_address)
+
+      when "JOINING_NETWORK_RELAY"
+
+
+      when "ROUTING_INFO"
+
+
+      when "LEAVING_NETWORK"
+
+
+      when "INDEX"
+
+
+      when "SEARCH"
+
+
+      when "SEARCH RESPONSE"
+
+
+      when "PING"
+
+
+      when "ACK"
+
+    end
+
+  end
+
+  def receiveInput
+    received_packet = @socket.recvfrom(1000)
+    parsed = JSON.parse(received_packet[0])
+    puts parsed
   end
 
   def handleInput
     bar = "ROUTING_INFO" #this will be read in from other nodes later
-
     case bar
       when "JOINING_NETWORK"
         puts bar
@@ -100,9 +145,6 @@ sock = UDPSocket.new
 sock.bind("127.0.0.1", 4913)
 nd = Node.new
 nd.init(sock)
-nd.handleInput
 nd.sendMessageToSelf
+nd.receiveInput
 
-
-sr = SearchResult.new
-puts sr.words[0]
