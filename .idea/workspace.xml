@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="08916291-b1a6-46fe-810a-a5114bca92d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node.rb" afterPath="$PROJECT_DIR$/node.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="P2P-Search.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,7 +15,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1386441736801" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
+    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1386441966399" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,7 +32,7 @@
       <file leaf-file-name="node.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="39" column="5" selection-start="431" selection-end="431" vertical-scroll-proportion="0.6915254" vertical-offset="255" max-vertical-offset="1853">
+            <state line="42" column="4" selection-start="457" selection-end="457" vertical-scroll-proportion="0.7995521" vertical-offset="0" max-vertical-offset="1938">
               <folding />
             </state>
           </provider>
@@ -264,16 +265,16 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30359086" sideWeight="0.36705202" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297062" sideWeight="0.632948" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297062" sideWeight="0.632948" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -296,6 +297,13 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/node.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="100" column="0" selection-start="1433" selection-end="1433" vertical-scroll-proportion="0.0" vertical-offset="1195" max-vertical-offset="1870">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="15" column="28" selection-start="387" selection-end="387" vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1173">
@@ -333,7 +341,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="5" selection-start="431" selection-end="431" vertical-scroll-proportion="0.6915254" vertical-offset="255" max-vertical-offset="1853">
+        <state line="42" column="4" selection-start="457" selection-end="457" vertical-scroll-proportion="0.7995521" vertical-offset="0" max-vertical-offset="1938">
           <folding />
         </state>
       </provider>

@@ -39,6 +39,10 @@ class Node
 
   end
 
+  def search(words)
+    
+  end
+
   def sendMessageToSelf
     @socket.send "message-to-self", 0, "127.0.0.1", 4913
     p @socket.recvfrom(15) #=> ["message-to", ["AF_INET", 4913, "localhost", "127.0.0.1"]]
@@ -98,6 +102,7 @@ nd = Node.new
 nd.init(sock)
 nd.handleInput
 nd.sendMessageToSelf
+
 
 sr = SearchResult.new
 puts sr.words[0]
