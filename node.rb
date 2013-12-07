@@ -49,14 +49,14 @@ class Node
 
   end
 
-  def sendMessageToSelf(msg_type)
+  def sendMessage(msg_type, port, target)
 
-    message = generateMessage(msg_type)
-    @socket.send message, 0, @ip_address, @port
+    message = generateMessage(msg_type, target)
+    @socket.send message, 0, @ip_address, port
 
   end
 
-  def generateMessage(type)
+  def generateMessage(type, target)
 
     case type
       when "JOINING_NETWORK"
@@ -81,6 +81,7 @@ class Node
 
 
       when "PING"
+        msg = JSON.generate(type:type, target_id:target, sender_id:@node_id, ip_address:@ip_address)
 
 
       when "ACK"
@@ -90,46 +91,54 @@ class Node
   end
 
   def receiveInput
+
     received_packet = @socket.recvfrom(1000)
     parsed = JSON.parse(received_packet[0])
   end
 
   def handleInput
-    received = receiveInput
-    type = received['type']
+    begin
+      received = receiveInput
+      type = received['type']
 
-    case type
-      when "JOINING_NETWORK"
-        puts type
+      case type
+        when "JOINING_NETWORK"
+          puts type
 
-      when "JOINING_NETWORK_RELAY"
-        puts type
+        when "JOINING_NETWORK_RELAY"
+          puts type
 
-      when "ROUTING_INFO"
-        puts type
+        when "ROUTING_INFO"
+          puts type
 
-      when "LEAVING_NETWORK"
-        puts type
+        when "LEAVING_NETWORK"
+          puts type
 
-      when "INDEX"
-        puts type
+        when "INDEX"
+          puts type
 
-      when "SEARCH"
-        puts type
+        when "SEARCH"
+          puts type
 
-      when "SEARCH RESPONSE"
-        puts type
+        when "SEARCH RESPONSE"
+          puts type
 
-      when "PING"
-        puts type
+        when "PING"
+          if(received['target_id'] == @node_id)
+            puts "we cool"
 
-      when "ACK"
-        puts type
+          else
+            puts "passing it on"
+          end
 
-      else
-        puts "invalid message"
-    end
 
+        when "ACK"
+          puts type
+
+        else
+          puts "invalid message"
+      end
+   end while 1
   end
 
   def hashCode(string_to_hash)
@@ -147,6 +156,19 @@ sock = UDPSocket.new
 sock.bind("127.0.0.1", port)
 nd = Node.new
 nd.init(sock, 1, "127.0.0.1", port)
-nd.sendMessageToSelf("JOINING_NETWORK")
-nd.handleInput
 
+
+
+port2 = 8766
+sock2 = UDPSocket.new
+sock2.bind("127.0.0.1", port2)
+nd2 = Node.new
+nd2.init(sock2, 10, "127.0.0.1", port2)
+
+t1= Thread.new{nd.handleInput}
+t2 = Thread.new{nd2.handleInput}
+
+nd.sendMessage("PING",port2, 11)
+
+t1.join
+t2.join
