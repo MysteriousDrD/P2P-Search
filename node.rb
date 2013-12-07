@@ -23,11 +23,12 @@ end
 
 
 class Node
-  def init( sock)
+  def init( sock, id, ip, port)
     @socket = sock
-    @node_id = 1
-    @ip_address = "127.0.0.1"
+    @node_id = id
+    @ip_address = ip
     @gateway_id = 22
+    @port = port
 
   end
 
@@ -51,7 +52,7 @@ class Node
   def sendMessageToSelf(msg_type)
 
     message = generateMessage(msg_type)
-    @socket.send message, 0, "127.0.0.1", 4913
+    @socket.send message, 0, @ip_address, @port
 
   end
 
@@ -141,11 +142,11 @@ class Node
   end
 end
 
-
+port = 8767
 sock = UDPSocket.new
-sock.bind("127.0.0.1", 4913)
+sock.bind("127.0.0.1", port)
 nd = Node.new
-nd.init(sock)
+nd.init(sock, 1, "127.0.0.1", port)
 nd.sendMessageToSelf("JOINING_NETWORK")
 nd.handleInput
 
