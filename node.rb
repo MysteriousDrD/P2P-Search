@@ -146,6 +146,6 @@ sock = UDPSocket.new
 sock.bind("127.0.0.1", 4913)
 nd = Node.new
 nd.init(sock)
-nd.sendMessageToSelf("PING")
+nd.sendMessageToSelf("JOINING_NETWORK")
 nd.handleInput
 
