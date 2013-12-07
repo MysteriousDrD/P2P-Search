@@ -27,6 +27,18 @@ class Node
   end
 
 
+  def joinNetWork(bootstrap)
+
+  end
+
+  def leaveNetwork(networkId)
+    result = false
+  end
+
+  def indexPage(url, unique_words)
+
+  end
+
   def sendMessageToSelf
     @socket.send "message-to-self", 0, "127.0.0.1", 4913
     p @socket.recvfrom(15) #=> ["message-to", ["AF_INET", 4913, "localhost", "127.0.0.1"]]

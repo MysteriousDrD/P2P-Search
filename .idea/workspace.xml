@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08916291-b1a6-46fe-810a-a5114bca92d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node.rb" afterPath="$PROJECT_DIR$/node.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="P2P-Search.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +31,7 @@
       <file leaf-file-name="node.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="6" column="33" selection-start="133" selection-end="133" vertical-scroll-proportion="0.17288135" vertical-offset="0" max-vertical-offset="1649">
+            <state line="39" column="5" selection-start="431" selection-end="431" vertical-scroll-proportion="0.6915254" vertical-offset="255" max-vertical-offset="1853">
               <folding />
             </state>
           </provider>
@@ -334,7 +333,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="33" selection-start="133" selection-end="133" vertical-scroll-proportion="0.17288135" vertical-offset="0" max-vertical-offset="1649">
+        <state line="39" column="5" selection-start="431" selection-end="431" vertical-scroll-proportion="0.6915254" vertical-offset="255" max-vertical-offset="1853">
           <folding />
         </state>
       </provider>
