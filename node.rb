@@ -48,9 +48,9 @@ class Node
 
   end
 
-  def sendMessageToSelf
+  def sendMessageToSelf(msg_type)
 
-    message = generateMessage("JOINING_NETWORK")
+    message = generateMessage(msg_type)
     @socket.send message, 0, "127.0.0.1", 4913
 
   end
@@ -91,38 +91,39 @@ class Node
   def receiveInput
     received_packet = @socket.recvfrom(1000)
     parsed = JSON.parse(received_packet[0])
-    puts parsed
   end
 
   def handleInput
-    bar = "ROUTING_INFO" #this will be read in from other nodes later
-    case bar
+    received = receiveInput
+    type = received['type']
+
+    case type
       when "JOINING_NETWORK"
-        puts bar
+        puts type
 
       when "JOINING_NETWORK_RELAY"
-        puts bar
+        puts type
 
       when "ROUTING_INFO"
-        puts bar
+        puts type
 
       when "LEAVING_NETWORK"
-        puts bar
+        puts type
 
       when "INDEX"
-        puts bar
+        puts type
 
       when "SEARCH"
-        puts bar
+        puts type
 
       when "SEARCH RESPONSE"
-        puts bar
+        puts type
 
       when "PING"
-        puts bar
+        puts type
 
       when "ACK"
-        puts bar
+        puts type
 
       else
         puts "invalid message"
@@ -145,6 +146,6 @@ sock = UDPSocket.new
 sock.bind("127.0.0.1", 4913)
 nd = Node.new
 nd.init(sock)
-nd.sendMessageToSelf
-nd.receiveInput
+nd.sendMessageToSelf("PING")
+nd.handleInput
 
