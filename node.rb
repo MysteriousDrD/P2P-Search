@@ -29,8 +29,8 @@ class Node
     @ip_address = ip
     @gateway_id = 22
     @port = port
-    @waitingForAck = FALSE
     @time = Time.now.to_f
+    @AckList = Hash.new
 
   end
 
@@ -101,11 +101,11 @@ class Node
 
   def countUntilTimeout(id)
     puts "starting timeout counter for node"
-    while @waitingForAck do
+    while @AckList[id] do
       if Time.now.to_f - @time > 10 then
         puts "Timeout done: #{id} should be removed from routing table"
         #some code to remove node from routing table
-        @waitingForAck = FALSE
+        @AckList[id] = FALSE
       end
     end
   end
@@ -151,16 +151,16 @@ class Node
             sendMessage("ACK",received['ip_address'], received['sender_id'] )
             time = Time.now.to_f
             puts "timestamp: #{time}"
-            @waitingForAck = true
             target = received['target_id'] #this should be the next node in the routing table
+            @AckList[target] = true
             Thread.new{countUntilTimeout(target)} #start a threaded counter NB this only works for one timeout at a time
           end
 
 
 
         when "ACK"
-          puts "Node #{@node_id} received ACk"
-          @waitingForAck = FALSE
+          puts "Node #{@node_id} received ACK"
+          @AckList[target] = FALSE
           #should stop a counter here
 
         else
