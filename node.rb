@@ -29,6 +29,8 @@ class Node
     @ip_address = ip
     @gateway_id = 22
     @port = port
+    @waitingForAck = FALSE
+    @time = Time.now.to_f
 
   end
 
@@ -97,8 +99,20 @@ class Node
     parsed = JSON.parse(received_packet[0])
   end
 
+  def countUntilTimeout(id)
+    puts "starting timeout counter for node"
+    while @waitingForAck do
+      if Time.now.to_f - @time > 10 then
+        puts "Timeout done: #{id} should be removed from routing table"
+        #some code to remove node from routing table
+        @waitingForAck = FALSE
+      end
+    end
+  end
+
   def handleInput
     begin
+
       received = receiveInput
       type = received['type']
 
@@ -125,18 +139,29 @@ class Node
           puts type
 
         when "PING"
-          if(received['target_id'] == @node_id)
-            puts "we cool"
+          if received['target_id'] == @node_id then
+
+            sendMessage("ACK",received['ip_address'], received['sender_id'] )
+
 
 
           else
-            puts "passing it on"
+            puts "Node #{@node_id} passing it on"
+            #should be pinging next node in the routing table from here
+            sendMessage("ACK",received['ip_address'], received['sender_id'] )
+            time = Time.now.to_f
+            puts "timestamp: #{time}"
+            @waitingForAck = true
+            target = received['target_id'] #this should be the next node in the routing table
+            Thread.new{countUntilTimeout(target)} #start a threaded counter NB this only works for one timeout at a time
           end
-          sendMessage("ACK",received['ip_address'], received['sender_id'] )
+
 
 
         when "ACK"
-          puts type
+          puts "Node #{@node_id} received ACk"
+          @waitingForAck = FALSE
+          #should stop a counter here
 
         else
           puts "invalid message"
@@ -171,7 +196,7 @@ nd2.init(sock2, 10, "127.0.0.1", port2)
 t1= Thread.new{nd.handleInput}
 t2 = Thread.new{nd2.handleInput}
 
-nd.sendMessage("PING",port2, 10)
+nd.sendMessage("PING",port2, 11)
 
 t1.join
 t2.join
