@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="08916291-b1a6-46fe-810a-a5114bca92d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node.rb" afterPath="$PROJECT_DIR$/node.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="P2P-Search.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -15,7 +14,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1387381832296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
+    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1387384192947" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -32,7 +31,7 @@
       <file leaf-file-name="node.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="128" column="42" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.5762712" vertical-offset="1836" max-vertical-offset="3672">
+            <state line="67" column="63" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.48135594" vertical-offset="855" max-vertical-offset="3910">
               <folding />
             </state>
           </provider>
@@ -57,8 +56,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="952" />
-    <option name="y" value="319" />
+    <option name="x" value="811" />
+    <option name="y" value="302" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -253,7 +252,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="952" y="319" width="1400" height="1000" extended-state="0" />
+    <frame x="811" y="302" width="1400" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -369,7 +368,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="128" column="42" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.5762712" vertical-offset="1836" max-vertical-offset="3672">
+        <state line="67" column="63" selection-start="1108" selection-end="1108" vertical-scroll-proportion="0.48135594" vertical-offset="855" max-vertical-offset="3910">
           <folding />
         </state>
       </provider>

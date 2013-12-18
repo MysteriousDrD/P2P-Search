@@ -25,7 +25,7 @@ end
 class Node
   def init( sock)
     @socket = sock
-    @gateway_id = 22
+    @gateway_id = hashCode("component")
     @time = Time.now.to_f
     @AckList = Hash.new
     @Routing = Hash.new
@@ -33,6 +33,14 @@ class Node
 
   end
 
+  def predefinedSetup
+    @Routing[hashCode("apple")] = 8766
+    @node_id = hashCode("component")
+  end
+
+  def printRoutes
+    puts @Routing
+  end
 
   def joinNetwork(bootstrap, identifier, target)
     @gateway_id = 22
@@ -55,6 +63,12 @@ class Node
 
   def search(words)
 
+  end
+
+  def sendPing(target, port) #sender comes from the node itself
+    message = JSON.generate(type:"PING", target_id:hashCode(target), sender_id:@node_id, ip_address:port)
+    puts message
+    @socket.send message,0, @ip_address, @Routing[hashCode(target)]
   end
 
   def sendMessage(msg_type, port, target)
@@ -89,11 +103,11 @@ class Node
 
 
       when "PING"
-        msg = JSON.generate(type:type, target_id:target, sender_id:@node_id, ip_address:@port)
+        msg = JSON.generate(type:type, target_id:target, sender_id:@node_id, ip_address:ip)
 
 
       when "ACK"
-        msg = JSON.generate(type:type, node_id:@node_id, ip_address:@port)
+        msg = JSON.generate(type:type, node_id:@node_id, ip_address:ip)
 
     end
 
@@ -149,20 +163,21 @@ class Node
 
         when "PING"
           if received['target_id'] == @node_id then
+            puts "cool"
 
-            sendMessage("ACK",received['ip_address'], received['sender_id'] )
+            #sendMessage("ACK",received['ip_address'], received['sender_id'] )
 
 
 
           else
             puts "Node #{@node_id} passing it on"
             #should be pinging next node in the routing table from here
-            sendMessage("ACK",received['ip_address'], received['sender_id'] )
-            time = Time.now.to_f
-            puts "timestamp: #{time}"
-            target = received['target_id'] #this should be the next node in the routing table
-            @AckList[target] = true
-            Thread.new{countUntilTimeout(target)} #start a threaded counter NB this only works for one timeout at a time
+            #sendMessage("ACK",received['ip_address'], received['sender_id'] )
+            #time = Time.now.to_f
+            #puts "timestamp: #{time}"
+           # target = received['target_id'] #this should be the next node in the routing table
+           # @AckList[target] = true
+            #Thread.new{countUntilTimeout(target)} #start a threaded counter NB this only works for one timeout at a time
           end
 
 
@@ -193,8 +208,8 @@ sock = UDPSocket.new
 sock.bind("127.0.0.1", port)
 nd = Node.new
 nd.init(sock)
-
-
+nd.predefinedSetup
+nd.printRoutes
 
 port2 = 8766
 sock2 = UDPSocket.new
@@ -204,8 +219,7 @@ nd2.init(sock2)
 
 t1= Thread.new{nd.handleInput}
 t2 = Thread.new{nd2.handleInput}
-
-nd2.joinNetwork(8767, "orange", "apple")
-
+nd2.joinNetwork(8767, "apple", "component")
+nd.sendPing("apple", 8767)
 t1.join
 t2.join
