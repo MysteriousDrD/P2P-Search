@@ -132,19 +132,19 @@ class Node
           puts @Routing
           sendRoutingInfo(address)
           #printRoutes
-         # puts "added info to routing table "
+          puts "added info to routing table "
 
         when "JOINING_NETWORK_RELAY"
-          puts type
+        #  puts type
 
         when "ROUTING_INFO"
           routing = received['route_table']
-          puts "Table before: #{@Routing}"
+          #puts "Table before: #{@Routing}"
           hashes =  JSON.parse(routing) #add hashes to routing table
           hashes.each do |key, val|
             @Routing[key] = val
           end
-          puts "Table after (for #{@ownPort}: #{@Routing}"
+         # puts "Table after (for #{@ownPort}: #{@Routing}"
 
         when "LEAVING_NETWORK"
           puts type
@@ -167,15 +167,14 @@ class Node
 
 
 
-          else
+          else #this never happens
             puts "Node #{@node_id} passing it on"
             #should be pinging next node in the routing table from here
-            #sendMessage("ACK",received['ip_address'], received['sender_id'] )
             time = Time.now.to_f
             puts "timestamp: #{time}"
             target = received['target_id'] #this should be the next node in the routing table
             @AckList[target] = true
-            Thread.new{countUntilTimeout(hashCode(target))} #start a threaded counter NB this only works for one timeout at a time
+            Thread.new{countUntilTimeout(hashCode(target))}
           end
 
 
@@ -229,6 +228,10 @@ nd2.joinNetwork(port, "apple", "component")
 nd3.joinNetwork(port, "orange", "component")
 nd3.printRoutes
 
-#nd.sendPing("apple", 8767)
+
+sleep(0.5)
+puts "routes: "
+nd.printRoutes
+nd.sendPing("apple", 8767)
 t1.join
 t2.join
