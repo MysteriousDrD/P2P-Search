@@ -3,9 +3,7 @@ require 'json'
 class SearchResult
 
   def initialize
-    @words = ["component"]
     @frequency = 0
-    @url = "http://www.google.com"
   end
 
   def words
@@ -31,11 +29,12 @@ class Node
     @Routing = Hash.new
     @ip_address = "127.0.0.1"
     @ownPort = port
+    @Results = Hash.new
+    @ResultsLinks = Hash.new
 
   end
 
   def predefinedSetup
-    #@Routing[hashCode("apple")] = 8766
     @Routing[hashCode("component")] = @ownPort
     @node_id = hashCode("component")
   end
@@ -62,6 +61,7 @@ class Node
   end
 
   def indexPage(url, unique_words)
+    sendIndex(@Routing[hashCode(unique_words)], @node_id, unique_words, url)
 
   end
 
@@ -96,7 +96,10 @@ class Node
 
   end
 
-
+  def sendIndex(target, sender, word, links)
+    message = JSON.generate(type:"INDEX", target_id:target, sender_id:sender, keyWord:word, link:links)
+    @socket.send message,0, @ip_address, @Routing[hashCode(word)]
+  end
 
   def receiveInput
 
@@ -150,7 +153,29 @@ class Node
           puts type
 
         when "INDEX"
+          #need to store results here
           puts type
+          word = received['keyWord']
+          url = received['link']
+
+          if @ResultsLinks.has_key?(url) == FALSE then
+            @ResultsLinks[url] = 0
+          end
+          @ResultsLinks[url] = @ResultsLinks[url] + 1
+          @Results[word] = @ResultsLinks
+
+          puts @ResultsLinks
+          puts @Results
+
+
+
+
+
+
+
+
+
+
 
         when "SEARCH"
           puts type
@@ -163,11 +188,11 @@ class Node
             puts "sending ack to #{received['ip_address']} "
             sendAck(received['ip_address'])
             puts "ack sent "
-            #sendMessage("ACK",received['ip_address'], received['sender_id'] )
 
 
 
-          else #this never happens
+
+          else #this never happens with my implementation
             puts "Node #{@node_id} passing it on"
             #should be pinging next node in the routing table from here
             time = Time.now.to_f
@@ -233,5 +258,7 @@ sleep(0.5)
 puts "routes: "
 nd.printRoutes
 nd.sendPing("apple", 8767)
+nd.indexPage("http://meh.com", "apple")
+nd.indexPage("http://meh.com", "apple")
 t1.join
 t2.join
