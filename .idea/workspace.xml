@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="08916291-b1a6-46fe-810a-a5114bca92d6" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/node.rb" afterPath="$PROJECT_DIR$/node.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="P2P-Search.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -14,7 +15,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1387309905650" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
+    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1387381832296" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,7 +32,7 @@
       <file leaf-file-name="node.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="105" column="43" selection-start="1619" selection-end="1619" vertical-scroll-proportion="0.46101695" vertical-offset="1513" max-vertical-offset="3519">
+            <state line="128" column="42" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.5762712" vertical-offset="1836" max-vertical-offset="3672">
               <folding />
             </state>
           </provider>
@@ -56,8 +57,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="802" />
-    <option name="y" value="311" />
+    <option name="x" value="952" />
+    <option name="y" value="319" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -252,7 +253,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="802" y="311" width="1400" height="1000" extended-state="0" />
+    <frame x="952" y="319" width="1400" height="1000" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -264,16 +265,16 @@
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30359086" sideWeight="0.36705202" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297062" sideWeight="0.632948" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3297062" sideWeight="0.632948" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -298,6 +299,13 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/node.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="105" column="43" selection-start="1619" selection-end="1619" vertical-scroll-proportion="0.0" vertical-offset="1513" max-vertical-offset="3519">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="137" column="0" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.0" vertical-offset="1909" max-vertical-offset="3162">
@@ -356,14 +364,12 @@
     </entry>
     <entry file="file://C:/Ruby193/lib/ruby/1.9.1/rexml/functions.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="295" column="19" selection-start="8959" selection-end="8959" vertical-scroll-proportion="-1.4830508" vertical-offset="5890" max-vertical-offset="6800">
-          <folding />
-        </state>
+        <state line="295" column="19" selection-start="8959" selection-end="8959" vertical-scroll-proportion="-1.4830508" vertical-offset="5890" max-vertical-offset="6800" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="105" column="43" selection-start="1619" selection-end="1619" vertical-scroll-proportion="0.46101695" vertical-offset="1513" max-vertical-offset="3519">
+        <state line="128" column="42" selection-start="2290" selection-end="2290" vertical-scroll-proportion="0.5762712" vertical-offset="1836" max-vertical-offset="3672">
           <folding />
         </state>
       </provider>

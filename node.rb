@@ -23,19 +23,25 @@ end
 
 
 class Node
-  def init( sock, id, ip, port)
+  def init( sock)
     @socket = sock
-    @node_id = id
-    @ip_address = ip
     @gateway_id = 22
-    @port = port
     @time = Time.now.to_f
     @AckList = Hash.new
+    @Routing = Hash.new
+    @ip_address = "127.0.0.1"
 
   end
 
 
-  def joinNetWork(bootstrap)
+  def joinNetwork(bootstrap, identifier, target)
+    @gateway_id = 22
+    @node_id = hashCode(identifier)
+    targetNode = hashCode(target)
+
+    message = generateMessage("JOINING_NETWORK_SIMPLIFIED",  targetNode, bootstrap)
+    @socket.send message, 0, @ip_address, bootstrap #this is temporarily a port
+
 
   end
 
@@ -53,16 +59,16 @@ class Node
 
   def sendMessage(msg_type, port, target)
 
-    message = generateMessage(msg_type, target)
+    message = generateMessage(msg_type, target, 0)
     @socket.send message, 0, @ip_address, port
 
   end
 
-  def generateMessage(type, target)
+  def generateMessage(type, target, ip)
 
     case type
-      when "JOINING_NETWORK"
-        msg = JSON.generate(type:type, node_id:@node_id, ip_address:@ip_address)
+      when "JOINING_NETWORK_SIMPLIFIED"
+        msg = JSON.generate(type:type, node_id:@node_id, target_id:target ,ip_address:ip)
 
       when "JOINING_NETWORK_RELAY"
 
@@ -117,8 +123,11 @@ class Node
       type = received['type']
 
       case type
-        when "JOINING_NETWORK"
+        when "JOINING_NETWORK_SIMPLIFIED"
           puts type
+          info = received['node_id']
+          address = received['ip_address']
+          @Routing[info] = address
 
         when "JOINING_NETWORK_RELAY"
           puts type
@@ -183,7 +192,7 @@ port = 8767
 sock = UDPSocket.new
 sock.bind("127.0.0.1", port)
 nd = Node.new
-nd.init(sock, 1, "127.0.0.1", port)
+nd.init(sock)
 
 
 
@@ -191,12 +200,12 @@ port2 = 8766
 sock2 = UDPSocket.new
 sock2.bind("127.0.0.1", port2)
 nd2 = Node.new
-nd2.init(sock2, 10, "127.0.0.1", port2)
+nd2.init(sock2)
 
 t1= Thread.new{nd.handleInput}
 t2 = Thread.new{nd2.handleInput}
 
-nd.sendMessage("PING",port2, 11)
+nd2.joinNetwork(8767, "orange", "apple")
 
 t1.join
 t2.join
