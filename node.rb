@@ -35,7 +35,7 @@ class Node
   end
 
   def predefinedSetup
-    @Routing[hashCode("apple")] = 8766
+    #@Routing[hashCode("apple")] = 8766
     @Routing[hashCode("component")] = @ownPort
     @node_id = hashCode("component")
   end
@@ -127,8 +127,10 @@ class Node
           info = received['node_id']
           address = received['ip_address']
           puts address
+          puts info
+          @Routing[info] = address
+          puts @Routing
           sendRoutingInfo(address)
-          #@Routing[info] = address
           #printRoutes
          # puts "added info to routing table "
 
@@ -142,7 +144,7 @@ class Node
           hashes.each do |key, val|
             @Routing[key] = val
           end
-          puts "Table after: #{@Routing}"
+          puts "Table after (for #{@ownPort}: #{@Routing}"
 
         when "LEAVING_NETWORK"
           puts type
@@ -214,9 +216,18 @@ sock2.bind("127.0.0.1", port2)
 nd2 = Node.new
 nd2.init(sock2, port2)
 
+port3 = 8765
+sock3 = UDPSocket.new
+sock3.bind("127.0.0.1", port3)
+nd3 = Node.new
+nd3.init(sock3, port3)
+
 t1= Thread.new{nd.handleInput}
 t2 = Thread.new{nd2.handleInput}
-nd2.joinNetwork(8767, "apple", "component")
+t3 = Thread.new{nd3.handleInput}
+nd2.joinNetwork(port, "apple", "component")
+nd3.joinNetwork(port, "orange", "component")
+nd3.printRoutes
 
 #nd.sendPing("apple", 8767)
 t1.join

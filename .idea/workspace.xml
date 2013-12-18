@@ -14,7 +14,7 @@
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1387389542505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
+    <SUITE FILE_PATH="coverage/P2P-Search@node.coverage" NAME="node Coverage Results" MODIFIED="1387389970343" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="rcov" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" MODULE_NAME="P2P-Search" />
   </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
@@ -31,7 +31,7 @@
       <file leaf-file-name="node.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/node.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="143" column="13" selection-start="3316" selection-end="3316" vertical-scroll-proportion="0.76949155" vertical-offset="1977" max-vertical-offset="3876">
+            <state line="146" column="44" selection-start="3405" selection-end="3405" vertical-scroll-proportion="0.6915254" vertical-offset="2074" max-vertical-offset="4063">
               <folding />
             </state>
           </provider>
@@ -368,7 +368,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="143" column="13" selection-start="3316" selection-end="3316" vertical-scroll-proportion="0.76949155" vertical-offset="1977" max-vertical-offset="3876">
+        <state line="146" column="44" selection-start="3405" selection-end="3405" vertical-scroll-proportion="0.6915254" vertical-offset="2074" max-vertical-offset="4063">
           <folding />
         </state>
       </provider>
