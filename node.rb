@@ -36,8 +36,10 @@ class Node
 
   def predefinedSetup
     @Routing[hashCode("apple")] = 8766
+    @Routing[hashCode("component")] = @ownPort
     @node_id = hashCode("component")
   end
+
 
   def printRoutes
     puts @Routing
@@ -48,7 +50,8 @@ class Node
     @node_id = hashCode(identifier)
     targetNode = hashCode(target)
 
-    message = generateMessage("JOINING_NETWORK_SIMPLIFIED",  targetNode, bootstrap)
+    message = JSON.generate(type:"JOINING_NETWORK_SIMPLIFIED", node_id:@node_id, target_id:target, ip_address:@ownPort)
+    puts message
     @socket.send message, 0, @ip_address, bootstrap #this is temporarily a port
 
 
@@ -80,6 +83,12 @@ class Node
     @socket.send message,0,@ip_address, sender
   end
 
+  def sendRoutingInfo(joiner)
+    message = JSON.generate(type:"ROUTING_INFO", gateway_id:hashCode("component"), node_id:joiner,ip_address:@ownPort,
+    route_table:@Routing.to_json)
+    @socket.send message,0,@ip_address, joiner
+  end
+
   def sendMessage(msg_type, port, target)
 
     message = generateMessage(msg_type, target, 0)
@@ -87,40 +96,7 @@ class Node
 
   end
 
-  def generateMessage(type, target, ip)
 
-    case type
-      when "JOINING_NETWORK_SIMPLIFIED"
-        msg = JSON.generate(type:type, node_id:@node_id, target_id:target ,ip_address:ip)
-
-      when "JOINING_NETWORK_RELAY"
-
-
-      when "ROUTING_INFO"
-
-
-      when "LEAVING_NETWORK"
-
-
-      when "INDEX"
-
-
-      when "SEARCH"
-
-
-      when "SEARCH RESPONSE"
-
-
-      when "PING"
-        msg = JSON.generate(type:type, target_id:target, sender_id:@node_id, ip_address:ip)
-
-
-      when "ACK"
-        msg = JSON.generate(type:type, node_id:@node_id, ip_address:ip)
-
-    end
-
-  end
 
   def receiveInput
 
@@ -138,6 +114,7 @@ class Node
         @AckList[id] = FALSE
       end
     end
+    puts "timeout didn't expire"
   end
 
   def handleInput
@@ -149,14 +126,23 @@ class Node
         when "JOINING_NETWORK_SIMPLIFIED"
           info = received['node_id']
           address = received['ip_address']
-          @Routing[info] = address
-          puts "added info to routing table "
+          puts address
+          sendRoutingInfo(address)
+          #@Routing[info] = address
+          #printRoutes
+         # puts "added info to routing table "
 
         when "JOINING_NETWORK_RELAY"
           puts type
 
         when "ROUTING_INFO"
-          puts type
+          routing = received['route_table']
+          puts "Table before: #{@Routing}"
+          hashes =  JSON.parse(routing) #add hashes to routing table
+          hashes.each do |key, val|
+            @Routing[key] = val
+          end
+          puts "Table after: #{@Routing}"
 
         when "LEAVING_NETWORK"
           puts type
@@ -221,7 +207,6 @@ sock.bind("127.0.0.1", port)
 nd = Node.new
 nd.init(sock, port)
 nd.predefinedSetup
-nd.printRoutes
 
 port2 = 8766
 sock2 = UDPSocket.new
@@ -232,6 +217,7 @@ nd2.init(sock2, port2)
 t1= Thread.new{nd.handleInput}
 t2 = Thread.new{nd2.handleInput}
 nd2.joinNetwork(8767, "apple", "component")
-nd.sendPing("apple", 8767)
+
+#nd.sendPing("apple", 8767)
 t1.join
 t2.join
