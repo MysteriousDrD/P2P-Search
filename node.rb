@@ -66,7 +66,7 @@ class Node
   end
 
   def search(words)
-    sendSearch(words, hashCode(words), @ownPort)
+    sendSearch(words, hashCode(words), @node_id)
   end
 
   def sendPing(target, port) #sender comes from the node itself
@@ -104,6 +104,13 @@ class Node
   def sendSearch(word, target, sender)
     message = JSON.generate(type:"SEARCH", word:word, node_id:target, sender_id:sender)
     @socket.send message,0, @ip_address, @Routing[target]
+  end
+
+  def sendSearchResponse(word, sender)
+    puts "sending search response"
+    message = JSON.generate(type:"SEARCH_RESPONSE", word:word, node_id:@node_id, sender_id:sender, response:@Results[word])
+    sendStr = sender.to_s()
+    @socket.send message,0, @ip_address, @Routing[sendStr]
   end
 
   def receiveInput
@@ -159,7 +166,7 @@ class Node
 
         when "INDEX"
           #need to store results here
-          puts type
+          puts "Node #{@ownPort} indexing"
           word = received['keyWord']
           url = received['link']
 
@@ -174,20 +181,16 @@ class Node
 
 
 
-
-
-
-
-
-
-
-
         when "SEARCH"
 
           puts "received search request at #{@ownPort} from node #{received['sender_id']}"
+          senderID = received['sender_id']
+          word = received['word']
+          sendSearchResponse(word, senderID)
 
-        when "SEARCH RESPONSE"
-          puts type
+        when "SEARCH_RESPONSE"
+          puts "Results:"
+          puts received['response']
 
         when "PING"
           if received['target_id'] == @node_id then
@@ -266,6 +269,6 @@ sleep(0.5)
 #nd.sendPing("apple", 8767)
 nd.indexPage("http://meh.com", "apple")
 nd.indexPage("http://meh.com", "apple")
-nd3.search("orange")
+nd.search("apple")
 t1.join
 t2.join
